@@ -1,6 +1,8 @@
 const express = require("express")
 const app = express()
+const path = require("path")
 app.use(express.json())
+app.use("/images", express.static(path.join(__dirname,"/images")))
 const dotenv = require("dotenv")
 dotenv.config()
 const mongoose = require("mongoose")
@@ -14,6 +16,7 @@ mongoose.set("strictQuery", false);
 mongoose.connect(process.env.MONGO_URI)
 .then(console.log("Connected to MongoDB."))
 .catch((err) => console.log(err))
+
 
 
 
